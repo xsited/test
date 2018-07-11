@@ -1,0 +1,91 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "apis": [
+    {
+      "path": "/../token.{format}",
+      "description": "API Tokens"
+    },
+    {
+      "path": "/../devices.{format}",
+      "description": "Devices"
+    },
+    {
+      "path": "/../syslog_config.{format}",
+      "description": "Remote Syslog Server Configuration"
+    },
+    {
+      "path": "/../device_groups.{format}",
+      "description": "Device Groups"
+    },
+    {
+      "path": "/../networks.{format}",
+      "description": "Overlay Networks"
+    },
+    {
+      "path": "/../network_devices.{format}",
+      "description": "Overlay Network Devices"
+    },
+    {
+      "path": "/../endboxes.{format}",
+      "description": "HIPservices"
+    },
+    {
+      "path": "/../endbox_routes.{format}",
+      "description": "Overlay Routes"
+    },
+    {
+      "path": "/../endbox_groups.{format}",
+      "description": "HIPservice Groups"
+    },
+    {
+      "path": "/../relay_rules.{format}",
+      "description": "Relay Rules"
+    },
+    {
+      "path": "/../wireless.{format}",
+      "description": "Wireless (WiFi) Settings"
+    },
+    {
+      "path": "/../people.{format}",
+      "description": "People Settings"
+    },
+    {
+      "path": "/../invites.{format}",
+      "description": "HIP Invites"
+    },
+    {
+      "path": "/../event_action_types.{format}",
+      "description": "Event Action Types"
+    },
+    {
+      "path": "/../event_actions.{format}",
+      "description": "Event Actions"
+    },
+    {
+      "path": "/../event_monitor_types.{format}",
+      "description": "Event Monitor Types"
+    },
+    {
+      "path": "/../event_monitors.{format}",
+      "description": "Event Monitors"
+    },
+    {
+      "path": "/../alert_notifications.{format}",
+      "description": "Alerts"
+    },
+    {
+      "path": "/../licensing.{format}",
+      "description": "Licensing"
+    }
+  ],
+  "authorizations": null,
+  "info": {
+    "title": "Simple Connect API",
+    "description": "API methods for Simple Connect",
+    "termsOfServiceUrl": "http://www.temperednetworks.com/support",
+    "contact": "support@temperednetworks.com",
+    "license": "Tempered Networks EULA",
+    "licenseUrl": "/eula/EndUserLicenseAgreement1-1-15.docx"
+  }
+}

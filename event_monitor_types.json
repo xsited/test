@@ -1,0 +1,72 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "event_monitor_types",
+  "apis": [
+    {
+      "path": "/api/v1/event_monitor_types/{id}/monitorables",
+      "operations": [
+        {
+          "summary": "Returns a list of IDs that are valid monitorable targets of a monitor for the given event monitor type",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::EventMonitorTypes#monitorables",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/event_monitor_types",
+      "operations": [
+        {
+          "summary": "Returns a collection of event monitor types",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            }
+          ],
+          "nickname": "Api::V1::EventMonitorTypes#index",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

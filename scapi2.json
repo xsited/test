@@ -1,0 +1,4115 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "alert_notifications",
+  "apis": [
+    {
+      "path": "/api/v1/alerts/acknowledge",
+      "operations": [
+        {
+          "summary": "Acknowledge that you have seen multiple alerts",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "alert_ids",
+              "type": "alert_ids",
+              "description": "An array of ID strings",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::AlertNotifications#bulk_acknowledge",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/alerts",
+      "operations": [
+        {
+          "summary": "Delete multiple alerts by ID, level, or both",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "alert_destroy",
+              "type": "alert_destroy",
+              "description": "An array of ID strings",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::AlertNotifications#bulk_destroy",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/alerts/{id}/acknowledge",
+      "operations": [
+        {
+          "summary": "Acknowledge that you have seen and optionally leave a comment for an alert",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": null,
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "comment",
+              "type": "string",
+              "description": "Comment that will be seen by all people who have received this alert",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::AlertNotifications#acknowledge",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/alerts",
+      "operations": [
+        {
+          "summary": "Returns a paginated list of alerts",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "order",
+              "type": "string",
+              "description": "order",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "ascending",
+              "type": "boolean",
+              "description": "ascending",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "filter",
+              "type": "string",
+              "description": "Filter alerts based on state",
+              "required": false,
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "pending",
+                  "acknowledged",
+                  "info",
+                  "warning",
+                  "error"
+                ]
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "search_term",
+              "type": "string",
+              "description": "Filter alerts based on the search term",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            }
+          ],
+          "nickname": "Api::V1::AlertNotifications#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/alerts/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single alert",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::AlertNotifications#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/alerts/{id}",
+      "operations": [
+        {
+          "summary": "Delete an existing alert",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::AlertNotifications#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "alert_destroy": {
+      "id": "alert_destroy",
+      "required": null,
+      "properties": {
+        "alert_ids": {
+          "type": "alert_ids",
+          "description": "An array of ID strings"
+        },
+        "level": {
+          "type": "string",
+          "description": "Delete all alerts of a specified level (valid: all, info, warning, error)",
+          "allowable_values": {
+            "value_type": "LIST",
+            "values": [
+              "all",
+              "info",
+              "warning",
+              "error"
+            ]
+          }
+        }
+      }
+    },
+    "alert_ids": {
+      "id": "alert_ids",
+      "required": [
+        "alert_ids"
+      ],
+      "properties": {
+        "alert_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "device_groups",
+  "apis": [
+    {
+      "path": "/api/v1/device_groups",
+      "operations": [
+        {
+          "summary": "Delete multiple device groups.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "device_group_ids",
+              "type": "device_group_ids",
+              "description": "Delete multiple device groups.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::DeviceGroups#bulk_destroy",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/device_groups",
+      "operations": [
+        {
+          "summary": "Returns a collection of device groups.",
+          "notes": "This lists all device groups. Include an offset to enable pagination.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "filter",
+              "type": "string",
+              "description": "filter",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "type": "string",
+              "description": "sort",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::DeviceGroups#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/device_groups",
+      "operations": [
+        {
+          "summary": "Create a new device group.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "device_group",
+              "type": "device_group",
+              "description": "Create a new device group.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::DeviceGroups#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/device_groups/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single device group.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Device Group ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::DeviceGroups#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/device_groups/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing device group (All fields are optional).",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Device Group ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "device_group",
+              "type": "device_group",
+              "description": "Update an existing device group (All fields are optional).",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::DeviceGroups#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/device_groups/{id}",
+      "operations": [
+        {
+          "summary": "Delete an existing device group.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Device Group ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::DeviceGroups#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "device_group": {
+      "id": "device_group",
+      "required": [
+        "name",
+        "device_ids"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": null
+        },
+        "description": {
+          "type": "string",
+          "description": null
+        },
+        "device_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "device_group_ids": {
+      "id": "device_group_ids",
+      "required": [
+        "device_group_ids"
+      ],
+      "properties": {
+        "device_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "devices",
+  "apis": [
+    {
+      "path": "/api/v1/devices/export_devices",
+      "operations": [
+        {
+          "summary": "Export devices in CSV file format.",
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Devices#export_devices",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices/accept_discovered_devices",
+      "operations": [
+        {
+          "summary": "Accept discovered device for multiple devices.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "device_ids",
+              "type": "device_ids",
+              "description": "Accept discovered device for multiple devices.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Devices#accept_discovered_devices",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices",
+      "operations": [
+        {
+          "summary": "Delete multiple devices.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "device_ids",
+              "type": "device_ids",
+              "description": "Delete multiple devices.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Devices#bulk_destroy",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices/{id}/accept_discovered_device",
+      "operations": [
+        {
+          "summary": "Accept discovered device.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Device ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Devices#accept_discovered_device",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices",
+      "operations": [
+        {
+          "summary": "Returns a collection of devices.",
+          "notes": "This lists all HIPservice devices. Include an offset to enable pagination.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "filter",
+              "type": "string",
+              "description": "filter",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "type": "string",
+              "description": "sort",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::Devices#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices",
+      "operations": [
+        {
+          "summary": "Create a new device.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "devices",
+              "type": "devices",
+              "description": "Create a new device.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Devices#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single device.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Device ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Devices#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices/{id}",
+      "operations": [
+        {
+          "summary": "Updates a device",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Device ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "devices",
+              "type": "devices",
+              "description": "Update an existing device (All fields are optional).",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Devices#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices/{id}",
+      "operations": [
+        {
+          "summary": "Delete an existing device.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Device ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Devices#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "devices": {
+      "id": "devices",
+      "required": [
+        "hipservice_id",
+        "overlay_device_ip",
+        "name"
+      ],
+      "properties": {
+        "hipservice_id": {
+          "type": "string",
+          "description": "HIPservice ID"
+        },
+        "overlay_device_ip": {
+          "type": "string",
+          "description": "Overlay Device IP"
+        },
+        "overlay_device_ip_nat": {
+          "type": "string",
+          "description": "Overlay Device IP (NAT) - HIPswitch must have NAT enabled to set"
+        },
+        "name": {
+          "type": "string",
+          "description": "name"
+        },
+        "mac": {
+          "type": "string",
+          "description": "MAC Address"
+        },
+        "description": {
+          "type": "string",
+          "description": "description"
+        },
+        "mac_lockdown": {
+          "type": "boolean",
+          "description": "MAC Address Lockdown"
+        }
+      }
+    },
+    "device_ids": {
+      "id": "device_ids",
+      "required": [
+        "device_ids"
+      ],
+      "properties": {
+        "device_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "endbox_groups",
+  "apis": [
+    {
+      "path": "/api/v1/hipservices_groups",
+      "operations": [
+        {
+          "summary": "Delete multiple HIPservices groups.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "hipservices_group_ids",
+              "type": "hipservices_group_ids",
+              "description": "Delete multiple HIPservices groups.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::EndboxGroups#bulk_destroy",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices_groups/{id}/reboot",
+      "operations": [
+        {
+          "summary": "Reboot HIPservice group.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "HIPservice group ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::EndboxGroups#reboot",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices_groups",
+      "operations": [
+        {
+          "summary": "Returns a collection of HIPservice groups.",
+          "notes": "This lists all HIPservice groups. Include an offset to enable pagination.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "filter",
+              "type": "string",
+              "description": "filter",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "type": "string",
+              "description": "sort",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::EndboxGroups#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices_groups",
+      "operations": [
+        {
+          "summary": "Create a new HIPservice group.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "hipservices_group",
+              "type": "hipservices_group",
+              "description": "Create a new HIPservice group.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::EndboxGroups#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices_groups/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single HIPservice.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice group ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::EndboxGroups#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices_groups/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing HIPservice group (All fields are optional).",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice group ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "hipservices_group",
+              "type": "hipservices_group",
+              "description": "Update an existing HIPservice group (All fields are optional).",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::EndboxGroups#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices_groups/{id}",
+      "operations": [
+        {
+          "summary": "Delete an existing HIPservice group.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "HIPservice group ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::EndboxGroups#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "hipservices_group": {
+      "id": "hipservices_group",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": null
+        },
+        "description": {
+          "type": "string",
+          "description": null
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "Set enabled state of HIPservice group"
+        },
+        "relay_group": {
+          "type": "boolean",
+          "description": "Set whether this HIPservice group is a relay group (all HIPservices must be relays to enable)"
+        },
+        "hipservices_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "hipservices_group_ids": {
+      "id": "hipservices_group_ids",
+      "required": [
+        "hipservices_group_ids"
+      ],
+      "properties": {
+        "hipservices_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "endbox_routes",
+  "apis": [
+    {
+      "path": "/api/v1/hipservices/{hipservice_id}/overlay_routes",
+      "operations": [
+        {
+          "summary": "Create a new overlay route",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "hipservice_id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "route",
+              "type": "route",
+              "description": "Create a new overlay route",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::EndboxRoutes#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{hipservice_id}/overlay_routes/{id}",
+      "operations": [
+        {
+          "summary": "Delete an overlay route",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "hipservice_id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Overlay route ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::EndboxRoutes#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "route": {
+      "id": "route",
+      "required": [
+        "network",
+        "gateway"
+      ],
+      "properties": {
+        "network": {
+          "type": "string",
+          "description": "network CIDR (example: 10.23.12.0/24)"
+        },
+        "gateway": {
+          "type": "string",
+          "description": "IP address"
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "event_action_types",
+  "apis": [
+    {
+      "path": "/api/v1/event_action_types",
+      "operations": [
+        {
+          "summary": "Returns a collection of event action types",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            }
+          ],
+          "nickname": "Api::V1::EventActionTypes#index",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "event_action_types",
+  "apis": [
+    {
+      "path": "/api/v1/event_action_types",
+      "operations": [
+        {
+          "summary": "Returns a collection of event action types",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            }
+          ],
+          "nickname": "Api::V1::EventActionTypes#index",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "event_actions",
+  "apis": [
+    {
+      "path": "/api/v1/event_actions",
+      "operations": [
+        {
+          "summary": "Returns a collection of event actions",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            }
+          ],
+          "nickname": "Api::V1::EventActions#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/event_actions",
+      "operations": [
+        {
+          "summary": "Create a new event action",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "event_action",
+              "type": "event_action",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 201,
+              "responseModel": null,
+              "message": "Created"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::EventActions#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/event_actions/{id}",
+      "operations": [
+        {
+          "summary": "Return a single event action",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::EventActions#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/event_actions/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing event action",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": null,
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "event_action",
+              "type": "event_action_update",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::EventActions#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/event_actions/{id}",
+      "operations": [
+        {
+          "summary": "Delete an existing event action",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::EventActions#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "event_action": {
+      "id": "event_action",
+      "required": [
+        "event_monitor_id",
+        "event_action_type_id",
+        "params"
+      ],
+      "properties": {
+        "event_monitor_id": {
+          "type": "string",
+          "description": "Event monitor ID"
+        },
+        "event_action_type_id": {
+          "type": "string",
+          "description": "Event action type ID"
+        },
+        "params": {
+          "type": "hash",
+          "description": "Hash of params for desired event action. Required and optional params are defined on each event action type"
+        }
+      }
+    },
+    "event_action_update": {
+      "id": "event_action_update",
+      "required": [
+        "params"
+      ],
+      "properties": {
+        "params": {
+          "type": "hash",
+          "description": "Hash of params for desired event action. Required and optional params are defined on each event action type"
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "invites",
+  "apis": [
+    {
+      "path": "/api/v1/invites",
+      "operations": [
+        {
+          "summary": "Returns a paginated list of HIP invites and their recipients",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "order",
+              "type": "string",
+              "description": "order",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "ascending",
+              "type": "boolean",
+              "description": "ascending",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            }
+          ],
+          "nickname": "Api::V1::Invites#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/invites",
+      "operations": [
+        {
+          "summary": "Create a HIP invite",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "invite",
+              "type": "invite",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 201,
+              "responseModel": null,
+              "message": "Created"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Invites#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/invites/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single HIP invite and its recipients",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Invites#show",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "invite": {
+      "id": "invite",
+      "required": [
+        "emails",
+        "name_schema",
+        "expires_at"
+      ],
+      "properties": {
+        "emails": {
+          "type": "emails",
+          "description": "An array of email addresses"
+        },
+        "email_subject": {
+          "type": "string",
+          "description": "Subject line of email sent to invitees"
+        },
+        "email_message": {
+          "type": "string",
+          "description": "Message of email to send to invitees. It is advisable to include the Conductor URI, Conductor MAP port, and a location where users can download the HIPclient package."
+        },
+        "name_schema": {
+          "type": "string",
+          "description": "Schema used to determine name of HIPservice when it connects to conductor. Variables are wrapped in \"${}\". Valid variables are: email, email_name, hipswitch_type, ip"
+        },
+        "expires_at": {
+          "type": "string",
+          "description": "ISO8601 date-time format when the HIP invites will expire if not used"
+        },
+        "hipservice_group_ids": {
+          "type": "hipservice_group_ids",
+          "description": "An array of ID strings"
+        },
+        "overlay_device_ip_start": {
+          "type": "string",
+          "description": "First overlay IP address in range to be assigned to HIPservice when it connects to Conductor"
+        },
+        "uniq_ip": {
+          "type": "string",
+          "description": "'true' if IP addresses already assigned to existing devices should be skipped"
+        }
+      }
+    },
+    "emails": {
+      "id": "emails",
+      "required": [
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "array",
+          "description": "An array of email addresses",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "hipservice_group_ids": {
+      "id": "hipservice_group_ids",
+      "required": [
+        "hipservice_group_ids"
+      ],
+      "properties": {
+        "hipservice_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "hip_invite": {
+      "id": "hip_invite",
+      "required": [
+        "id",
+        "email_subject",
+        "email_message",
+        "person_id",
+        "admin_ip",
+        "hip_invite_recipients",
+        "created_at",
+        "updated_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": null
+        },
+        "email_subject": {
+          "type": "string",
+          "description": "Subject line of email sent to invitees"
+        },
+        "email_message": {
+          "type": "string",
+          "description": "Message of email to send to invitees. It is advisable to include the Conductor URI, Conductor MAP port, and a location where users can download the HIPclient package."
+        },
+        "person_id": {
+          "type": "string",
+          "description": "ID of the administrator that create the HIP invite"
+        },
+        "admin_ip": {
+          "type": "string",
+          "description": "IP address of the administrator that create the HIP invite"
+        },
+        "hip_invite_recipients": {
+          "type": "string",
+          "description": "An array of ID strings"
+        },
+        "created_at": {
+          "type": "string",
+          "description": null
+        },
+        "updated_at": {
+          "type": "string",
+          "description": null
+        }
+      }
+    },
+    "hip_invite_recipient": {
+      "id": "hip_invite_recipient",
+      "required": [
+        "id",
+        "activation_code",
+        "hipservice_uid",
+        "email",
+        "status",
+        "expires_at",
+        "disabled_at",
+        "created_at",
+        "updated_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": null
+        },
+        "activation_code": {
+          "type": "string",
+          "description": "Activation code used by invitee to license and activate their HIPservice"
+        },
+        "hipservice_uid": {
+          "type": "string",
+          "description": "UID of HIPservice that used this invite"
+        },
+        "email": {
+          "type": "string",
+          "description": null
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status of invite"
+        },
+        "name_schema": {
+          "type": "string",
+          "description": "Schema used to determine name of HIPservice when it connects to conductor. Variables are wrapped in \"${}\". Valid variables are: email, email_name, hipswitch_type, ip"
+        },
+        "external_ip": {
+          "type": "string",
+          "description": "IP address system will attempt to assign to HIPclient when it is activated"
+        },
+        "hipservice_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings"
+        },
+        "expires_at": {
+          "type": "string",
+          "description": "ISO8601 date-time format when the HIP invites will expire if not used"
+        },
+        "disabled_at": {
+          "type": "string",
+          "description": "ISO8601 date-time when the HIP invite recipient activation code was revoked"
+        },
+        "created_at": {
+          "type": "string",
+          "description": null
+        },
+        "updated_at": {
+          "type": "string",
+          "description": null
+        }
+      }
+    },
+    "hip_invite_recipient_ids": {
+      "id": "hip_invite_recipient_ids",
+      "required": [
+        "hip_invite_recipient_ids"
+      ],
+      "properties": {
+        "hip_invite_recipient_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "licensing",
+  "apis": [
+    {
+      "path": "/api/v1/licensing/sync_export",
+      "operations": [
+        {
+          "summary": "Export a conductor sync package. Used to manually sync a conductor.",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 400,
+              "responseModel": null,
+              "message": "Bad Request"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Internal Server Error"
+            }
+          ],
+          "nickname": "Api::V1::Licensing#sync_export",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/licensing/sync",
+      "operations": [
+        {
+          "summary": "Synchronize your license data.",
+          "notes": "Synchronize your license data with Tempered Networks.",
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Licensing#sync",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/licensing/sync_import",
+      "operations": [
+        {
+          "summary": "Import a conductor sync package response. Used to manually sync a conductor.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "conductor_sync_package",
+              "description": "For import and export of conductor sync packages.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Internal Server Error"
+            }
+          ],
+          "nickname": "Api::V1::Licensing#sync_import",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/licensing/vouchers",
+      "operations": [
+        {
+          "summary": "Returns a collection of vouchers.",
+          "notes": "This is a list of vouchers.",
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::Licensing#get_vouchers",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/licensing/vouchers",
+      "operations": [
+        {
+          "summary": "Add a licensing voucher.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "vouchers",
+              "description": "Add a licensing voucher.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Licensing#add_voucher",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/licensing/vouchers/{voucher_id}",
+      "operations": [
+        {
+          "summary": "Returns a single voucher setting.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "voucher_id",
+              "type": "string",
+              "description": "Voucher ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Licensing#get_voucher",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/licensing/vouchers/{voucher_id}",
+      "operations": [
+        {
+          "summary": "Delete a licensing voucher.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "voucher_id",
+              "type": "integer",
+              "description": "Voucher ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Licensing#delete_voucher",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/licensing/prov_requests",
+      "operations": [
+        {
+          "summary": "Returns all pending provisioning requests.",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            }
+          ],
+          "nickname": "Api::V1::Licensing#get_prov_requests",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/licensing/prov_requests",
+      "operations": [
+        {
+          "summary": "Grant or Deny a provisioning request.",
+          "notes": "Grant or Deny a provisioning request by specifying true or false in the message body.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "prov_requests",
+              "description": "Grant or Deny a provisioning request.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::Licensing#grant_prov_requests",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/licensing/prov_requests/{license_id}",
+      "operations": [
+        {
+          "summary": "Returns a single provisioning request.",
+          "parameters": [
+
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Licensing#get_prov_request",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "vouchers": {
+      "id": "vouchers",
+      "required": [
+        "code"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Tempered Networks voucher code."
+        }
+      }
+    },
+    "prov_requests": {
+      "id": "prov_requests",
+      "required": [
+        "grant",
+        "id"
+      ],
+      "properties": {
+        "grant": {
+          "type": "string",
+          "description": "Boolean true or false to grant or deny a provisioning request."
+        },
+        "id": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "conductor_sync_package": {
+      "id": "conductor_sync_package",
+      "required": [
+        "cert_subject",
+        "key",
+        "iv",
+        "auth_data",
+        "auth_tag",
+        "data"
+      ],
+      "properties": {
+        "cert_subject": {
+          "type": "string",
+          "description": "Auto-generated field. Do not modify."
+        },
+        "key": {
+          "type": "string",
+          "description": "Auto-generated field. Do not modify."
+        },
+        "iv": {
+          "type": "string",
+          "description": "Auto-generated field. Do not modify."
+        },
+        "auth_data": {
+          "type": "string",
+          "description": "Auto-generated field. Do not modify."
+        },
+        "auth_tag": {
+          "type": "string",
+          "description": "Auto-generated field. Do not modify."
+        },
+        "data": {
+          "type": "string",
+          "description": "Auto-generated field. Do not modify."
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "network_devices",
+  "apis": [
+    {
+      "path": "/api/v1/overlay_network_devices/trust",
+      "operations": [
+        {
+          "summary": "Establishes policy between two device groups/devices.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "network_device",
+              "description": "Establishes policy between two device groups/devices.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::NetworkDevices#connect",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/overlay_network_devices",
+      "operations": [
+        {
+          "summary": "Removes device groups and devices from an overlay policy.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "network_devices",
+              "description": "Removes device groups and devices from an overlay policy.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::NetworkDevices#destroy",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/overlay_network_devices/trust",
+      "operations": [
+        {
+          "summary": "Removes policy between two device groups/devices.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "network_device",
+              "description": "Removes policy between two device groups/devices.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::NetworkDevices#disconnect",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/overlay_network_devices",
+      "operations": [
+        {
+          "summary": "Adds device groups and devices to an overlay policy.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "network_devices",
+              "description": "Adds device groups and devices to an overlay policy.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::NetworkDevices#create",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "network_device": {
+      "id": "network_device",
+      "required": [
+        "network_id",
+        "device_group_1",
+        "device_group_2"
+      ],
+      "properties": {
+        "network_id": {
+          "type": "string",
+          "description": null
+        },
+        "device_group_1": {
+          "type": "string",
+          "description": "ID of device group 1"
+        },
+        "device_group_2": {
+          "type": "string",
+          "description": "ID of device group 2"
+        }
+      }
+    },
+    "network_devices": {
+      "id": "network_devices",
+      "required": [
+        "network_id",
+        "device_group_ids"
+      ],
+      "properties": {
+        "network_id": {
+          "type": "string",
+          "description": null
+        },
+        "device_group_ids": {
+          "type": "array",
+          "description": "An Array of device group ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "networks",
+  "apis": [
+    {
+      "path": "/api/v1/overlay_networks",
+      "operations": [
+        {
+          "summary": "Delete multiple overlay networks.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "overlay_network_ids",
+              "type": "overlay_network_ids",
+              "description": "Delete multiple overlay networks.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Networks#bulk_destroy",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/overlay_networks",
+      "operations": [
+        {
+          "summary": "Returns a collection of overlay networks.",
+          "notes": "This lists all overlay networks. Include an offset to enable pagination.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "filter",
+              "type": "string",
+              "description": "filter",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "type": "string",
+              "description": "sort",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::Networks#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/overlay_networks",
+      "operations": [
+        {
+          "summary": "Create a new overlay network.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "overlay_network",
+              "type": "overlay_network",
+              "description": "Create a new overlay network.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Networks#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/overlay_networks/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single overlay network.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Overlay Network ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Networks#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/overlay_networks/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing overlay network (All fields are optional).",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Overlay Network ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "overlay_network",
+              "type": "overlay_network",
+              "description": "Update an existing overlay network (All fields are optional).",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Networks#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/overlay_networks/{id}",
+      "operations": [
+        {
+          "summary": "Delete an existing overlay network.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Overlay Network ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Networks#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "overlay_network": {
+      "id": "overlay_network",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": null
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "Boolean true or false to set enabled state of network."
+        },
+        "set_current_user_as_manager": {
+          "type": "boolean",
+          "description": "Boolean true or false to enable creator of network as its manager."
+        },
+        "description": {
+          "type": "string",
+          "description": null
+        }
+      }
+    },
+    "overlay_network_ids": {
+      "id": "overlay_network_ids",
+      "required": [
+        "overlay_network_ids"
+      ],
+      "properties": {
+        "overlay_network_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "people",
+  "apis": [
+    {
+      "path": "/api/v1/people",
+      "operations": [
+        {
+          "summary": "Returns a collection of People settings.",
+          "notes": "This lists all People settings. Include an offset to enable pagination.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "filter",
+              "type": "string",
+              "description": "filter",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "type": "string",
+              "description": "sort",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::People#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/people",
+      "operations": [
+        {
+          "summary": "Create a new Person.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "person",
+              "type": "people",
+              "description": "Create a new Person.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::People#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/people/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single Person setting.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Person ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::People#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/people/{id}",
+      "operations": [
+        {
+          "summary": "Update a Person setting (All fields are optional).",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Person ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "person",
+              "type": "people",
+              "description": "Update a Person setting (All fields are optional).",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::People#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/people/{id}",
+      "operations": [
+        {
+          "summary": "Delete a Person.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Person ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::People#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "people": {
+      "id": "people",
+      "required": [
+        "name",
+        "username",
+        "password",
+        "role",
+        "is_active"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full Name"
+        },
+        "username": {
+          "type": "string",
+          "description": "Username"
+        },
+        "description": {
+          "type": "string",
+          "description": "description"
+        },
+        "provider": {
+          "type": "string",
+          "description": "User Directory, specify LDAP if remote"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email"
+        },
+        "phone1": {
+          "type": "string",
+          "description": "Phone 1"
+        },
+        "phone2": {
+          "type": "string",
+          "description": "Phone 2"
+        },
+        "password": {
+          "type": "string",
+          "description": "Password"
+        },
+        "role": {
+          "type": "string",
+          "description": "Person's Role ( administrator, editor, viewer, remote)"
+        },
+        "is_active": {
+          "type": "string",
+          "description": "Boolean true or false to set Person's enable status"
+        },
+        "is_api_user": {
+          "type": "string",
+          "description": "Boolean true or false to enable/disable Person's api access"
+        },
+        "email_alert_level": {
+          "type": "string",
+          "description": "Level at which alerts should be emailed to user (Options: none, info, warning, error). Email server must be configured."
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "relay_rules",
+  "apis": [
+    {
+      "path": "/api/v1/relay_rules/{id}/add",
+      "operations": [
+        {
+          "summary": "Add HIPservices or HIPservice groups to a relay rule",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "relay_rule",
+              "type": "rule_details",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#add",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/relay_rules/{id}/remove",
+      "operations": [
+        {
+          "summary": "Remove HIPservices or HIPservice groups from a relay rule",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "relay_rule",
+              "type": "rule_details",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#remove",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/relay_rules",
+      "operations": [
+        {
+          "summary": "Returns a collection of relay rules",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/relay_rules",
+      "operations": [
+        {
+          "summary": "Create a new relay rule",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "relay_rule",
+              "type": "relay_rule",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/relay_rules/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single relay rule",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/relay_rules/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing relay rule",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "relay_rule",
+              "type": "relay_rule_update",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/relay_rules/{id}",
+      "operations": [
+        {
+          "summary": "Delete an existing relay rule",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "relay_rule": {
+      "id": "relay_rule",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": null
+        },
+        "description": {
+          "type": "string",
+          "description": null
+        }
+      }
+    },
+    "relay_rule_update": {
+      "id": "relay_rule_update",
+      "required": null,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": null
+        },
+        "description": {
+          "type": "string",
+          "description": null
+        }
+      }
+    },
+    "rule_details": {
+      "id": "rule_details",
+      "required": null,
+      "properties": {
+        "group_1": {
+          "type": "group_1",
+          "description": null
+        },
+        "relay": {
+          "type": "relay",
+          "description": null
+        },
+        "group_2": {
+          "type": "group_2",
+          "description": null
+        }
+      }
+    },
+    "group_1": {
+      "id": "group_1",
+      "required": null,
+      "properties": {
+        "hipservice_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        },
+        "hipservice_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "relay": {
+      "id": "relay",
+      "required": null,
+      "properties": {
+        "hipservice_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        },
+        "hipservice_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "group_2": {
+      "id": "group_2",
+      "required": null,
+      "properties": {
+        "hipservice_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        },
+        "hipservice_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "syslog_config",
+  "apis": [
+    {
+      "path": "/api/v1/syslog_config",
+      "operations": [
+        {
+          "summary": "Current remote syslog server configuration.",
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            }
+          ],
+          "nickname": "Api::V1::SyslogConfig#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/syslog_config",
+      "operations": [
+        {
+          "summary": "Update remote syslog server configuration.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "payload",
+              "type": "syslog_config",
+              "description": "Modify one or all the fields of the syslog_config model",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 400,
+              "responseModel": null,
+              "message": "Bad Request"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::SyslogConfig#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/syslog_config",
+      "operations": [
+        {
+          "summary": "Remove remote syslog server configuration.",
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::SyslogConfig#destroy",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/syslog_config",
+      "operations": [
+        {
+          "summary": "Add remote syslog server configuration.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "payload",
+              "type": "syslog_config",
+              "description": "server and port are required with either log_conductor or log_hipservices or both being true",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 400,
+              "responseModel": null,
+              "message": "Bad Request"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::SyslogConfig#create",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "syslog_config": {
+      "id": "syslog_config",
+      "required": [
+        "server",
+        "port"
+      ],
+      "properties": {
+        "server": {
+          "type": "string",
+          "description": "Remote syslog server URL"
+        },
+        "port": {
+          "type": "string",
+          "description": "Remote syslog server port"
+        },
+        "log_conductor": {
+          "type": "boolean",
+          "description": null
+        },
+        "log_hipservices": {
+          "type": "boolean",
+          "description": null
+        },
+        "use_tls": {
+          "type": "boolean",
+          "description": null
+        }
+      }
+    }
+  }
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "token",
+  "apis": [
+    {
+      "path": "/api/v1/token/generate",
+      "operations": [
+        {
+          "summary": "Generate an authentication token for the API",
+          "notes": "Requires HTTP basic auth. Returns user's client ID and a newly generate authentication token.",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Basic auth is in the format 'Basic <user_token>' where user_token is a base64 endcoded string with username + ':' + password",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "provider",
+              "type": "string",
+              "description": "Authentication provider. Options: local, ldap / Default: local",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 201,
+              "responseModel": null,
+              "message": "Created"
+            },
+            {
+              "code": 400,
+              "responseModel": null,
+              "message": "Bad Request"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            }
+          ],
+          "nickname": "Api::V1::Token#generate_token",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "wireless",
+  "apis": [
+    {
+      "path": "/api/v1/wireless_settings",
+      "operations": [
+        {
+          "summary": "Returns wireless settings.",
+          "notes": "This lists all wireless settings. Include an offset to enable pagination.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "filter",
+              "type": "string",
+              "description": "filter",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "type": "string",
+              "description": "sort",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::Wireless#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/wireless_settings",
+      "operations": [
+        {
+          "summary": "Create new wireless settings.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "wireless",
+              "type": "wireless",
+              "description": "Create new wireless settings.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Wireless#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/wireless_settings/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single wireless setting.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Wireless settings ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Wireless#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/wireless_settings/{id}",
+      "operations": [
+        {
+          "summary": "Update an wireless settings (All fields are optional).",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "wireless",
+              "type": "wireless",
+              "description": "Update an wireless settings (All fields are optional).",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Wireless#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/wireless_settings/{id}",
+      "operations": [
+        {
+          "summary": "Delete wireless settings.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Wireless settings ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Wireless#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "wireless": {
+      "id": "wireless",
+      "required": [
+        "ssid",
+        "key",
+        "ca_chain",
+        "enabled",
+        "wireless_auth_type"
+      ],
+      "properties": {
+        "ssid": {
+          "type": "string",
+          "description": null
+        },
+        "key": {
+          "type": "string",
+          "description": null
+        },
+        "ca_chain": {
+          "type": "string",
+          "description": null
+        },
+        "enabled": {
+          "type": "string",
+          "description": "Boolean true or false to enabled WiFi network."
+        },
+        "wireless_auth_type": {
+          "type": "string",
+          "description": "(Open,WEP,WPA-PSK,EAP-TLS)"
+        }
+      }
+    }
+  }
+}

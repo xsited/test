@@ -1,0 +1,403 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "devices",
+  "apis": [
+    {
+      "path": "/api/v1/devices/export_devices",
+      "operations": [
+        {
+          "summary": "Export devices in CSV file format.",
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Devices#export_devices",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices/accept_discovered_devices",
+      "operations": [
+        {
+          "summary": "Accept discovered device for multiple devices.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "device_ids",
+              "type": "device_ids",
+              "description": "Accept discovered device for multiple devices.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Devices#accept_discovered_devices",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices",
+      "operations": [
+        {
+          "summary": "Delete multiple devices.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "device_ids",
+              "type": "device_ids",
+              "description": "Delete multiple devices.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Devices#bulk_destroy",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices/{id}/accept_discovered_device",
+      "operations": [
+        {
+          "summary": "Accept discovered device.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Device ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Devices#accept_discovered_device",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices",
+      "operations": [
+        {
+          "summary": "Returns a collection of devices.",
+          "notes": "This lists all HIPservice devices. Include an offset to enable pagination.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "filter",
+              "type": "string",
+              "description": "filter",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "type": "string",
+              "description": "sort",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::Devices#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices",
+      "operations": [
+        {
+          "summary": "Create a new device.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "devices",
+              "type": "devices",
+              "description": "Create a new device.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Devices#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single device.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Device ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Devices#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices/{id}",
+      "operations": [
+        {
+          "summary": "Updates a device",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Device ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "devices",
+              "type": "devices",
+              "description": "Update an existing device (All fields are optional).",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Devices#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/devices/{id}",
+      "operations": [
+        {
+          "summary": "Delete an existing device.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Device ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Devices#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "devices": {
+      "id": "devices",
+      "required": [
+        "hipservice_id",
+        "overlay_device_ip",
+        "name"
+      ],
+      "properties": {
+        "hipservice_id": {
+          "type": "string",
+          "description": "HIPservice ID"
+        },
+        "overlay_device_ip": {
+          "type": "string",
+          "description": "Overlay Device IP"
+        },
+        "overlay_device_ip_nat": {
+          "type": "string",
+          "description": "Overlay Device IP (NAT) - HIPswitch must have NAT enabled to set"
+        },
+        "name": {
+          "type": "string",
+          "description": "name"
+        },
+        "mac": {
+          "type": "string",
+          "description": "MAC Address"
+        },
+        "description": {
+          "type": "string",
+          "description": "description"
+        },
+        "mac_lockdown": {
+          "type": "boolean",
+          "description": "MAC Address Lockdown"
+        }
+      }
+    },
+    "device_ids": {
+      "id": "device_ids",
+      "required": [
+        "device_ids"
+      ],
+      "properties": {
+        "device_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}

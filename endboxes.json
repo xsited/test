@@ -1,0 +1,933 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "endboxes",
+  "apis": [
+    {
+      "path": "/api/v1/hipservices/{id}/devices",
+      "operations": [
+        {
+          "summary": "HIPservice devices",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#devices",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}/export_devices",
+      "operations": [
+        {
+          "summary": "Export local devices to csv file.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#export_devices",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}/health_data",
+      "operations": [
+        {
+          "summary": "Returns HIPservice health data.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "timestamp",
+              "type": "string",
+              "description": "Health data range begin",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "timestamp_end",
+              "type": "string",
+              "description": "Health data rage end",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#endbox_data",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}/overlay_routes",
+      "operations": [
+        {
+          "summary": "HIPservice overlay routes",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#overlay_routes",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}/traffic_stats",
+      "operations": [
+        {
+          "summary": "Returns HIPservice traffic stats",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#port_stats",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}/ports",
+      "operations": [
+        {
+          "summary": "Returns HIPservice port configuration",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#port_configs",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}/blink",
+      "operations": [
+        {
+          "summary": "Sends a blink LED request to the HIPservice.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#blink",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}/detect_devices",
+      "operations": [
+        {
+          "summary": "Sends request to auto discover HIPservice local devices.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "overlay_gateway_ip",
+              "type": "string",
+              "description": "Overlay Gateway IP",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "overlay_netmask",
+              "type": "string",
+              "description": "Overlay Netmask",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#device_discovery",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}/manage",
+      "operations": [
+        {
+          "summary": "Sets the HIPservice state to managed.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#manage",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}/reactivate",
+      "operations": [
+        {
+          "summary": "Activate the HIPservice.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#activate",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}/reassign",
+      "operations": [
+        {
+          "summary": "Reassign a to be replaced HIPservice config to the current HIPservice.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "replacement_hipservice_id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#reassign",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}/reboot",
+      "operations": [
+        {
+          "summary": "Sends a reboot request to the HIPservice.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#reboot",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}/revoke",
+      "operations": [
+        {
+          "summary": "Deactivate the HIPservice.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#revoke",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices",
+      "operations": [
+        {
+          "summary": "Returns a collection of HIPservices.",
+          "notes": "This lists all HIPservices. Include an offset to enable pagination.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "filter",
+              "type": "string",
+              "description": "filter",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "type": "string",
+              "description": "sort",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single HIPservice.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing HIPservice (All fields are optional).",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "appliance",
+              "type": "appliance",
+              "description": "Update an existing HIPservice (All fields are optional).",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/hipservices/{id}",
+      "operations": [
+        {
+          "summary": "Delete an existing revoked HIPservice.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Endboxes#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "appliance": {
+      "id": "appliance",
+      "required": null,
+      "properties": {
+        "ccert_dn": {
+          "type": "string",
+          "description": null
+        },
+        "ccert": {
+          "type": "string",
+          "description": null
+        },
+        "description": {
+          "type": "string",
+          "description": null
+        },
+        "location": {
+          "type": "string",
+          "description": null
+        },
+        "title": {
+          "type": "string",
+          "description": null
+        },
+        "device_activity_reporting_interval": {
+          "type": "string",
+          "description": null
+        },
+        "packet_capture_started": {
+          "type": "string",
+          "description": null
+        },
+        "ha_partner_id": {
+          "type": "string",
+          "description": null
+        },
+        "ha_ip": {
+          "type": "string",
+          "description": null
+        },
+        "two_factor_auth": {
+          "type": "string",
+          "description": "deprecated"
+        },
+        "exclusive_mode": {
+          "type": "string",
+          "description": "deprecated"
+        },
+        "active": {
+          "type": "string",
+          "description": null
+        },
+        "overlay_gateway_ip": {
+          "type": "string",
+          "description": null
+        },
+        "overlay_netmask": {
+          "type": "string",
+          "description": null
+        },
+        "nat": {
+          "type": "string",
+          "description": null
+        },
+        "transparent_mode": {
+          "type": "string",
+          "description": null
+        },
+        "esp_encryption": {
+          "type": "string",
+          "description": null
+        },
+        "underlay_ip_nat": {
+          "type": "string",
+          "description": null
+        },
+        "enabled": {
+          "type": "string",
+          "description": null
+        },
+        "overlay_device_ip": {
+          "type": "string",
+          "description": "Overlay Device IP (for HIPclient)"
+        },
+        "overlay_device_netmask": {
+          "type": "string",
+          "description": "Overlay Device Netmask (for HIPclient)"
+        },
+        "device_auto_detect": {
+          "type": "string",
+          "description": null
+        },
+        "dhcp": {
+          "type": "dhcp",
+          "description": "DHCP Settings."
+        },
+        "stp_enabled": {
+          "type": "boolean",
+          "description": "Enable spanning tree protocol (requires Advanced Networking)"
+        },
+        "path_mtu_enabled": {
+          "type": "boolean",
+          "description": "Enable path MTU detection (requires Advanced Networking)"
+        },
+        "source_nat_enabled": {
+          "type": "boolean",
+          "description": "Enable source NAT (requires Advanced Networking)"
+        }
+      }
+    },
+    "dhcp": {
+      "id": "dhcp",
+      "required": [
+        "dhcp_configured",
+        "range_begin",
+        "range_end",
+        "netmask"
+      ],
+      "properties": {
+        "dhcp_configured": {
+          "type": "string",
+          "description": "DHCP configured (true/false)"
+        },
+        "range_begin": {
+          "type": "string",
+          "description": "DHCP address range begin"
+        },
+        "range_end": {
+          "type": "string",
+          "description": "DHCP address range end"
+        },
+        "netmask": {
+          "type": "string",
+          "description": "netmask"
+        },
+        "gateway": {
+          "type": "string",
+          "description": "gateway"
+        },
+        "domain": {
+          "type": "string",
+          "description": "domain"
+        },
+        "lease_time": {
+          "type": "string",
+          "description": "DHCP lease time (e.g. 1h, 10h,180m, or infinite)"
+        }
+      }
+    },
+    "hipservice_ids": {
+      "id": "hipservice_ids",
+      "required": [
+        "hipservice_ids"
+      ],
+      "properties": {
+        "hipservice_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}

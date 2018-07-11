@@ -1,0 +1,151 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "syslog_config",
+  "apis": [
+    {
+      "path": "/api/v1/syslog_config",
+      "operations": [
+        {
+          "summary": "Current remote syslog server configuration.",
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            }
+          ],
+          "nickname": "Api::V1::SyslogConfig#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/syslog_config",
+      "operations": [
+        {
+          "summary": "Update remote syslog server configuration.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "payload",
+              "type": "syslog_config",
+              "description": "Modify one or all the fields of the syslog_config model",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 400,
+              "responseModel": null,
+              "message": "Bad Request"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::SyslogConfig#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/syslog_config",
+      "operations": [
+        {
+          "summary": "Remove remote syslog server configuration.",
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::SyslogConfig#destroy",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/syslog_config",
+      "operations": [
+        {
+          "summary": "Add remote syslog server configuration.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "payload",
+              "type": "syslog_config",
+              "description": "server and port are required with either log_conductor or log_hipservices or both being true",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 400,
+              "responseModel": null,
+              "message": "Bad Request"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::SyslogConfig#create",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "syslog_config": {
+      "id": "syslog_config",
+      "required": [
+        "server",
+        "port"
+      ],
+      "properties": {
+        "server": {
+          "type": "string",
+          "description": "Remote syslog server URL"
+        },
+        "port": {
+          "type": "string",
+          "description": "Remote syslog server port"
+        },
+        "log_conductor": {
+          "type": "boolean",
+          "description": null
+        },
+        "log_hipservices": {
+          "type": "boolean",
+          "description": null
+        },
+        "use_tls": {
+          "type": "boolean",
+          "description": null
+        }
+      }
+    }
+  }
+}

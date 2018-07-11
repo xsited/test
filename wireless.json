@@ -1,0 +1,240 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "wireless",
+  "apis": [
+    {
+      "path": "/api/v1/wireless_settings",
+      "operations": [
+        {
+          "summary": "Returns wireless settings.",
+          "notes": "This lists all wireless settings. Include an offset to enable pagination.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "filter",
+              "type": "string",
+              "description": "filter",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "type": "string",
+              "description": "sort",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::Wireless#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/wireless_settings",
+      "operations": [
+        {
+          "summary": "Create new wireless settings.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "wireless",
+              "type": "wireless",
+              "description": "Create new wireless settings.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Wireless#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/wireless_settings/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single wireless setting.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Wireless settings ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Wireless#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/wireless_settings/{id}",
+      "operations": [
+        {
+          "summary": "Update an wireless settings (All fields are optional).",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "wireless",
+              "type": "wireless",
+              "description": "Update an wireless settings (All fields are optional).",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Wireless#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/wireless_settings/{id}",
+      "operations": [
+        {
+          "summary": "Delete wireless settings.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Wireless settings ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Wireless#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "wireless": {
+      "id": "wireless",
+      "required": [
+        "ssid",
+        "key",
+        "ca_chain",
+        "enabled",
+        "wireless_auth_type"
+      ],
+      "properties": {
+        "ssid": {
+          "type": "string",
+          "description": null
+        },
+        "key": {
+          "type": "string",
+          "description": null
+        },
+        "ca_chain": {
+          "type": "string",
+          "description": null
+        },
+        "enabled": {
+          "type": "string",
+          "description": "Boolean true or false to enabled WiFi network."
+        },
+        "wireless_auth_type": {
+          "type": "string",
+          "description": "(Open,WEP,WPA-PSK,EAP-TLS)"
+        }
+      }
+    }
+  }
+}

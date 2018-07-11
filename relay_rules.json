@@ -1,0 +1,418 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "relay_rules",
+  "apis": [
+    {
+      "path": "/api/v1/relay_rules/{id}/add",
+      "operations": [
+        {
+          "summary": "Add HIPservices or HIPservice groups to a relay rule",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "relay_rule",
+              "type": "rule_details",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#add",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/relay_rules/{id}/remove",
+      "operations": [
+        {
+          "summary": "Remove HIPservices or HIPservice groups from a relay rule",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "relay_rule",
+              "type": "rule_details",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#remove",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/relay_rules",
+      "operations": [
+        {
+          "summary": "Returns a collection of relay rules",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/relay_rules",
+      "operations": [
+        {
+          "summary": "Create a new relay rule",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "relay_rule",
+              "type": "relay_rule",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/relay_rules/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single relay rule",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/relay_rules/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing relay rule",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "relay_rule",
+              "type": "relay_rule_update",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/relay_rules/{id}",
+      "operations": [
+        {
+          "summary": "Delete an existing relay rule",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "HIPservice ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::RelayRules#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "relay_rule": {
+      "id": "relay_rule",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": null
+        },
+        "description": {
+          "type": "string",
+          "description": null
+        }
+      }
+    },
+    "relay_rule_update": {
+      "id": "relay_rule_update",
+      "required": null,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": null
+        },
+        "description": {
+          "type": "string",
+          "description": null
+        }
+      }
+    },
+    "rule_details": {
+      "id": "rule_details",
+      "required": null,
+      "properties": {
+        "group_1": {
+          "type": "group_1",
+          "description": null
+        },
+        "relay": {
+          "type": "relay",
+          "description": null
+        },
+        "group_2": {
+          "type": "group_2",
+          "description": null
+        }
+      }
+    },
+    "group_1": {
+      "id": "group_1",
+      "required": null,
+      "properties": {
+        "hipservice_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        },
+        "hipservice_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "relay": {
+      "id": "relay",
+      "required": null,
+      "properties": {
+        "hipservice_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        },
+        "hipservice_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "group_2": {
+      "id": "group_2",
+      "required": null,
+      "properties": {
+        "hipservice_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        },
+        "hipservice_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}

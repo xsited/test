@@ -1,0 +1,333 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "invites",
+  "apis": [
+    {
+      "path": "/api/v1/invites",
+      "operations": [
+        {
+          "summary": "Returns a paginated list of HIP invites and their recipients",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "order",
+              "type": "string",
+              "description": "order",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "ascending",
+              "type": "boolean",
+              "description": "ascending",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 403,
+              "responseModel": null,
+              "message": "Forbidden"
+            }
+          ],
+          "nickname": "Api::V1::Invites#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/invites",
+      "operations": [
+        {
+          "summary": "Create a HIP invite",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "invite",
+              "type": "invite",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 201,
+              "responseModel": null,
+              "message": "Created"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::Invites#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/invites/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single HIP invite and its recipients",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": null,
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Invites#show",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "invite": {
+      "id": "invite",
+      "required": [
+        "emails",
+        "name_schema",
+        "expires_at"
+      ],
+      "properties": {
+        "emails": {
+          "type": "emails",
+          "description": "An array of email addresses"
+        },
+        "email_subject": {
+          "type": "string",
+          "description": "Subject line of email sent to invitees"
+        },
+        "email_message": {
+          "type": "string",
+          "description": "Message of email to send to invitees. It is advisable to include the Conductor URI, Conductor MAP port, and a location where users can download the HIPclient package."
+        },
+        "name_schema": {
+          "type": "string",
+          "description": "Schema used to determine name of HIPservice when it connects to conductor. Variables are wrapped in \"${}\". Valid variables are: email, email_name, hipswitch_type, ip"
+        },
+        "expires_at": {
+          "type": "string",
+          "description": "ISO8601 date-time format when the HIP invites will expire if not used"
+        },
+        "hipservice_group_ids": {
+          "type": "hipservice_group_ids",
+          "description": "An array of ID strings"
+        },
+        "overlay_device_ip_start": {
+          "type": "string",
+          "description": "First overlay IP address in range to be assigned to HIPservice when it connects to Conductor"
+        },
+        "uniq_ip": {
+          "type": "string",
+          "description": "'true' if IP addresses already assigned to existing devices should be skipped"
+        }
+      }
+    },
+    "emails": {
+      "id": "emails",
+      "required": [
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "array",
+          "description": "An array of email addresses",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "hipservice_group_ids": {
+      "id": "hipservice_group_ids",
+      "required": [
+        "hipservice_group_ids"
+      ],
+      "properties": {
+        "hipservice_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "hip_invite": {
+      "id": "hip_invite",
+      "required": [
+        "id",
+        "email_subject",
+        "email_message",
+        "person_id",
+        "admin_ip",
+        "hip_invite_recipients",
+        "created_at",
+        "updated_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": null
+        },
+        "email_subject": {
+          "type": "string",
+          "description": "Subject line of email sent to invitees"
+        },
+        "email_message": {
+          "type": "string",
+          "description": "Message of email to send to invitees. It is advisable to include the Conductor URI, Conductor MAP port, and a location where users can download the HIPclient package."
+        },
+        "person_id": {
+          "type": "string",
+          "description": "ID of the administrator that create the HIP invite"
+        },
+        "admin_ip": {
+          "type": "string",
+          "description": "IP address of the administrator that create the HIP invite"
+        },
+        "hip_invite_recipients": {
+          "type": "string",
+          "description": "An array of ID strings"
+        },
+        "created_at": {
+          "type": "string",
+          "description": null
+        },
+        "updated_at": {
+          "type": "string",
+          "description": null
+        }
+      }
+    },
+    "hip_invite_recipient": {
+      "id": "hip_invite_recipient",
+      "required": [
+        "id",
+        "activation_code",
+        "hipservice_uid",
+        "email",
+        "status",
+        "expires_at",
+        "disabled_at",
+        "created_at",
+        "updated_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": null
+        },
+        "activation_code": {
+          "type": "string",
+          "description": "Activation code used by invitee to license and activate their HIPservice"
+        },
+        "hipservice_uid": {
+          "type": "string",
+          "description": "UID of HIPservice that used this invite"
+        },
+        "email": {
+          "type": "string",
+          "description": null
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status of invite"
+        },
+        "name_schema": {
+          "type": "string",
+          "description": "Schema used to determine name of HIPservice when it connects to conductor. Variables are wrapped in \"${}\". Valid variables are: email, email_name, hipswitch_type, ip"
+        },
+        "external_ip": {
+          "type": "string",
+          "description": "IP address system will attempt to assign to HIPclient when it is activated"
+        },
+        "hipservice_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings"
+        },
+        "expires_at": {
+          "type": "string",
+          "description": "ISO8601 date-time format when the HIP invites will expire if not used"
+        },
+        "disabled_at": {
+          "type": "string",
+          "description": "ISO8601 date-time when the HIP invite recipient activation code was revoked"
+        },
+        "created_at": {
+          "type": "string",
+          "description": null
+        },
+        "updated_at": {
+          "type": "string",
+          "description": null
+        }
+      }
+    },
+    "hip_invite_recipient_ids": {
+      "id": "hip_invite_recipient_ids",
+      "required": [
+        "hip_invite_recipient_ids"
+      ],
+      "properties": {
+        "hip_invite_recipient_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}

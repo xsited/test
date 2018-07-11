@@ -1,0 +1,290 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "device_groups",
+  "apis": [
+    {
+      "path": "/api/v1/device_groups",
+      "operations": [
+        {
+          "summary": "Delete multiple device groups.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "device_group_ids",
+              "type": "device_group_ids",
+              "description": "Delete multiple device groups.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::DeviceGroups#bulk_destroy",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/device_groups",
+      "operations": [
+        {
+          "summary": "Returns a collection of device groups.",
+          "notes": "This lists all device groups. Include an offset to enable pagination.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "filter",
+              "type": "string",
+              "description": "filter",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "type": "string",
+              "description": "sort",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "limit",
+              "type": "integer",
+              "description": "limit",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "offset",
+              "type": "integer",
+              "description": "offset",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::DeviceGroups#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/device_groups",
+      "operations": [
+        {
+          "summary": "Create a new device group.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "device_group",
+              "type": "device_group",
+              "description": "Create a new device group.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::DeviceGroups#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/device_groups/{id}",
+      "operations": [
+        {
+          "summary": "Returns a single device group.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Device Group ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::DeviceGroups#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/device_groups/{id}",
+      "operations": [
+        {
+          "summary": "Update an existing device group (All fields are optional).",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Device Group ID",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "device_group",
+              "type": "device_group",
+              "description": "Update an existing device group (All fields are optional).",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::DeviceGroups#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/device_groups/{id}",
+      "operations": [
+        {
+          "summary": "Delete an existing device group.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Device Group ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::DeviceGroups#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "device_group": {
+      "id": "device_group",
+      "required": [
+        "name",
+        "device_ids"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": null
+        },
+        "description": {
+          "type": "string",
+          "description": null
+        },
+        "device_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    },
+    "device_group_ids": {
+      "id": "device_group_ids",
+      "required": [
+        "device_group_ids"
+      ],
+      "properties": {
+        "device_group_ids": {
+          "type": "array",
+          "description": "An array of ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}

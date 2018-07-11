@@ -1,0 +1,177 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https:",
+  "resourcePath": "network_devices",
+  "apis": [
+    {
+      "path": "/api/v1/overlay_network_devices/trust",
+      "operations": [
+        {
+          "summary": "Establishes policy between two device groups/devices.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "network_device",
+              "description": "Establishes policy between two device groups/devices.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::NetworkDevices#connect",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/overlay_network_devices",
+      "operations": [
+        {
+          "summary": "Removes device groups and devices from an overlay policy.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "network_devices",
+              "description": "Removes device groups and devices from an overlay policy.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::NetworkDevices#destroy",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/overlay_network_devices/trust",
+      "operations": [
+        {
+          "summary": "Removes policy between two device groups/devices.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "network_device",
+              "description": "Removes policy between two device groups/devices.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::NetworkDevices#disconnect",
+          "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/overlay_network_devices",
+      "operations": [
+        {
+          "summary": "Adds device groups and devices to an overlay policy.",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "body",
+              "type": "network_devices",
+              "description": "Adds device groups and devices to an overlay policy.",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Api::V1::NetworkDevices#create",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "network_device": {
+      "id": "network_device",
+      "required": [
+        "network_id",
+        "device_group_1",
+        "device_group_2"
+      ],
+      "properties": {
+        "network_id": {
+          "type": "string",
+          "description": null
+        },
+        "device_group_1": {
+          "type": "string",
+          "description": "ID of device group 1"
+        },
+        "device_group_2": {
+          "type": "string",
+          "description": "ID of device group 2"
+        }
+      }
+    },
+    "network_devices": {
+      "id": "network_devices",
+      "required": [
+        "network_id",
+        "device_group_ids"
+      ],
+      "properties": {
+        "network_id": {
+          "type": "string",
+          "description": null
+        },
+        "device_group_ids": {
+          "type": "array",
+          "description": "An Array of device group ID strings",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}
